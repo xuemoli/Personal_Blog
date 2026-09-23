@@ -48,9 +48,12 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
-				name: "使一颗心免于哀伤",
-				artist: "知更鸟 / HOYO-MiX / Chevy",
-				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
+				name: "海底",
+				artist: "一支榴莲",
+				// TODO: 音频文件不入库（避免在公开仓库分发版权音频），已加入 .gitignore。
+				// 把音频上传到对象存储 / CDN 后，将下面的 url 换成外链地址。
+				// url: "/assets/music/海底.m4a", // 本地文件路径，仅本机开发用
+				url: "https://your-cdn.example.com/audio/海底.m4a",
 				cover: "/assets/music/cover/109951169585655912.webp",
 				lrc: "",
 			},
