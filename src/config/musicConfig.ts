@@ -1,5 +1,21 @@
 import type { MusicPlayerConfig } from "../types/musicConfig";
 
+// 本地音频文件路径：文件不入库（见 .gitignore），只有本机存在，供本地开发时播放
+const LOCAL_AUDIO_URL = "/assets/music/海底.m4a";
+// 生产环境音频外链：上传到对象存储 / CDN 后替换这里
+const PROD_AUDIO_URL = "https://your-cdn.example.com/audio/海底.m4a";
+
+// 是否为开发环境
+// 页面与浏览器端代码走 Vite/Astro，import.meta.env 会被静态替换成具体值；
+// 构建脚本（scripts/*.ts 用 tsx 在 Node 里跑）没有 import.meta.env，捕获后按生产处理
+function isDevEnv(): boolean {
+	try {
+		return import.meta.env.DEV;
+	} catch {
+		return false;
+	}
+}
+
 // 音乐播放器配置
 export const musicPlayerConfig: MusicPlayerConfig = {
 	// 是否在导航栏显示音乐播放器入口
@@ -50,10 +66,8 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 			{
 				name: "海底",
 				artist: "一支榴莲",
-				// TODO: 音频文件不入库（避免在公开仓库分发版权音频），已加入 .gitignore。
-				// 把音频上传到对象存储 / CDN 后，将下面的 url 换成外链地址。
-				// url: "/assets/music/海底.m4a", // 本地文件路径，仅本机开发用
-				url: "https://your-cdn.example.com/audio/海底.m4a",
+				// 开发时读本地文件，生产构建读外链（音频不入库，避免在公开仓库分发版权音频）
+				url: isDevEnv() ? LOCAL_AUDIO_URL : PROD_AUDIO_URL,
 				cover: "/assets/music/cover/109951169585655912.webp",
 				lrc: "",
 			},
