@@ -47,3 +47,7 @@ package/
 .codex*
 .claude
 .mimocode
+.mcp.json
+
+# 本地版权音频（不入库，musicConfig 改用外链）
+public/assets/music/海底.m4a
