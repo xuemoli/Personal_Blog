@@ -8,6 +8,7 @@ import {
 // ============================================================================
 // 导航栏配置 - 根据顺序动态生成导航栏链接
 // NavBar Configuration - Dynamically generate navigation bar links based on order
+// 注意：导航栏标题和 Logo 不在本文件，在 src/config/siteConfig.ts 的 navbar 段配置
 // ============================================================================
 const getDynamicNavBarConfig = (): NavBarConfig => {
 	// 基础导航栏链接
@@ -82,20 +83,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
-	// 关于及其子菜单
-	links.push({
-		name: "关于",
-		url: "#",
-		icon: "material-symbols:info",
-		children: [
-			// 打赏
-			LinkPresets.Sponsor,
-
-			// 关于页面
-			LinkPresets.About,
-		],
-	});
-
 	// 自定义导航栏链接
 	links.push({
 		name: "链接",
@@ -105,7 +92,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		children: [
 			{
 				name: "GitHub",
-				url: "https://github.com/CuteLeaf/Firefly",
+				url: "https://github.com/xuemoli/Personal_Blog",
 				external: true,
 				icon: "fa7-brands:github",
 			},

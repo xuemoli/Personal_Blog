@@ -42,17 +42,17 @@ const pages = resolvePageToggles({
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "Firefly",
+	title: "我的博客",
 
 	// 站点副标题
-	subtitle: "Demo site",
+	subtitle: "我的个人博客",
 
 	// 站点 URL
-	site_url: "https://firefly.cuteleaf.cn",
+	// 暂用本地地址占位，部署前改成真实域名，例如 "https://blog.example.com"
+	site_url: "http://localhost:4321",
 
 	// 站点描述
-	description:
-		"Firefly 是一款基于 Astro 框架和 Fuwari 模板开发的清新美观且现代化个人博客主题模板，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。",
+	description: "这里是我的个人博客，记录学习笔记、技术分享与生活随笔。",
 
 	// 站点关键词
 	keywords: [
@@ -117,7 +117,8 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "Firefly Blog",
+		// 改成你自己的博客名
+		title: "我的博客",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中

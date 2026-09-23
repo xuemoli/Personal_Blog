@@ -18,14 +18,18 @@ export const sponsorConfig: SponsorConfig = {
 	showComment: true,
 
 	// 是否在文章详情页底部显示打赏按钮
-	showButtonInPost: true,
+	showButtonInPost: false,
 
 	// 打赏方式列表
+	// qrCode: 收款码图片路径（放在 public 目录下，如 /assets/images/sponsor/alipay.png）
+	// link:   打赏链接，填写后会显示「前往打赏」按钮（新标签页打开）
+	// enabled: false 时该方式不显示
+	// 两项都填则二维码和按钮同时显示
 	methods: [
 		{
 			name: "支付宝",
 			icon: "fa7-brands:alipay",
-			// 收款码图片路径（需要放在 public 目录下）
+			// ⚠️ 换成你自己的收款码：替换 public/assets/images/sponsor/alipay.png
 			qrCode: "/assets/images/sponsor/alipay.png",
 			link: "",
 			description: "使用 支付宝 扫码打赏",
@@ -34,46 +38,46 @@ export const sponsorConfig: SponsorConfig = {
 		{
 			name: "微信",
 			icon: "fa7-brands:weixin",
+			// ⚠️ 换成你自己的收款码：替换 public/assets/images/sponsor/wechat.png
 			qrCode: "/assets/images/sponsor/wechat.png",
 			link: "",
 			description: "使用 微信 扫码打赏",
 			enabled: true,
 		},
 		{
-			name: "ko-fi",
-			icon: "simple-icons:kofi",
-			qrCode: "",
-			link: "https://ko-fi.com/cuteleaf",
-			description: "Buy a Coffee for Firefly",
-			enabled: true,
-		},
-		{
+			// 爱发电：把 link 改成你自己的主页（https://ifdian.net/a/你的ID）后，再把 enabled 改为 true
 			name: "爱发电",
 			icon: "simple-icons:afdian",
 			qrCode: "",
-			link: "https://ifdian.net/a/cuteleaf",
+			link: "",
 			description: "通过 爱发电 进行打赏",
-			enabled: true,
+			enabled: false,
+		},
+		{
+			// ko-fi：把 link 改成你自己的主页（https://ko-fi.com/你的ID）后，再把 enabled 改为 true
+			name: "ko-fi",
+			icon: "simple-icons:kofi",
+			qrCode: "",
+			link: "",
+			description: "Buy me a Coffee",
+			enabled: false,
 		},
 	],
 
 	// 打赏者列表（可选）
+	// 有 avatar 就显示头像图片，没有则用名字首字母生成头像；amount 和 date 都可以省略
+	// 想显示匿名可以直接把 name 写成「匿名」
 	sponsors: [
-		// 示例：已实名打赏者
-		{
-			name: "夏叶",
-			avatar:
-				"https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
-			amount: "¥50",
-			date: "2025-10-01",
-		},
-
-		// 示例：匿名打赏者
-		{
-			name: "匿名用户",
-			// avatar: "",
-			amount: "¥20",
-			date: "2025-10-01",
-		},
+		// {
+		// 	name: "某某",
+		// 	avatar: "https://example.com/avatar.png",
+		// 	amount: "¥50",
+		// 	date: "2025-10-01",
+		// },
+		// {
+		// 	name: "匿名",
+		// 	amount: "¥20",
+		// 	date: "2025-10-01",
+		// },
 	],
 };
