@@ -1,0 +1,37 @@
+# Netlify 构建配置
+# ------------------------------------------------------------------
+# 为什么需要这个文件：
+#   原先 Build command / Publish directory 只存在于 Netlify 网页的设置里，
+#   一旦重新链接仓库、迁移站点或换账号，这些设置会丢失，
+#   典型症状是"构建成功但发布的是空目录/404"，排查起来很费时间。
+#   写进仓库后，任何人都无法再漏填。
+#
+# 与 vercel.json 的关系：vercel.json 只在 Vercel 上生效，Netlify 会忽略它；
+#   本文件是 Netlify 侧的等价配置，两者可共存，互不干扰。
+
+[build]
+  # 与本机 `pnpm build` 完全一致（含图标/LQIP/字体子集/Pagefind 等 8 个步骤）
+  command = "pnpm build"
+  # Astro 静态产物的输出目录
+  publish = "dist"
+
+[build.environment]
+  # package.json 的 engines 要求 node >= 22.23.0，这里钉住主版本避免平台默认值漂移
+  NODE_VERSION = "22"
+
+# ------------------------------------------------------------------
+# 响应头（等价于 vercel.json 里原有的 headers 配置）
+# ------------------------------------------------------------------
+
+# Astro 产物文件名带内容哈希，可以放心长缓存
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
