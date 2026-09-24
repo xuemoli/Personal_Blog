@@ -49,5 +49,7 @@ package/
 .mimocode
 .mcp.json
 
+docs/部署上线总结.md
+docs/部署上线指南.md
 # 音乐资源（音频与 cover/ 封面）随仓库一起发布，Netlify 构建时拷进 dist/
 # 曾按扩展名整类排除音频、生产环境改读外链，但外链一直没落地，导致线上播不了；已改回自托管
