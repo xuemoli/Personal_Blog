@@ -1,10 +1,5 @@
 import type { MusicPlayerConfig } from "../types/musicConfig";
 
-// 本地音频文件路径：文件不入库（见 .gitignore），只有本机存在，供本地开发时播放
-const LOCAL_AUDIO_URL = "/assets/music/海底.m4a";
-// 生产环境音频外链：上传到对象存储 / CDN 后替换这里
-const PROD_AUDIO_URL = "https://your-cdn.example.com/audio/海底.m4a";
-
 // 是否为开发环境
 // 页面与浏览器端代码走 Vite/Astro，import.meta.env 会被静态替换成具体值；
 // 构建脚本（scripts/*.ts 用 tsx 在 Node 里跑）没有 import.meta.env，捕获后按生产处理
@@ -14,6 +9,12 @@ function isDevEnv(): boolean {
 	} catch {
 		return false;
 	}
+}
+
+// 音频地址分流：本地文件不入库（见 .gitignore），只有本机存在，供本地开发时播放；
+// 生产构建读外链，上传到对象存储 / CDN 后替换掉占位地址
+function audioUrl(localPath: string, prodUrl: string): string {
+	return isDevEnv() ? localPath : prodUrl;
 }
 
 // 音乐播放器配置
@@ -67,8 +68,21 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				name: "海底",
 				artist: "一支榴莲",
 				// 开发时读本地文件，生产构建读外链（音频不入库，避免在公开仓库分发版权音频）
-				url: isDevEnv() ? LOCAL_AUDIO_URL : PROD_AUDIO_URL,
+				url: audioUrl(
+					"/assets/music/海底.m4a",
+					"https://your-cdn.example.com/audio/海底.m4a",
+				),
 				cover: "/assets/music/cover/109951169585655912.webp",
+				lrc: "",
+			},
+			{
+				name: "茶汤",
+				artist: "郁可唯",
+				url: audioUrl(
+					"/assets/music/茶汤.mp3",
+					"https://your-cdn.example.com/audio/茶汤.mp3",
+				),
+				cover: "",
 				lrc: "",
 			},
 		],
