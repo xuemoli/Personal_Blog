@@ -49,9 +49,5 @@ package/
 .mimocode
 .mcp.json
 
-# 本地版权音频（不入库，musicConfig 改用外链）
-# 按扩展名整类排除，新增歌曲不必再改这里；cover/ 子目录的封面图仍入库
-public/assets/music/*.mp3
-public/assets/music/*.m4a
-public/assets/music/*.flac
-public/assets/music/*.wav
+# 音乐资源（音频与 cover/ 封面）随仓库一起发布，Netlify 构建时拷进 dist/
+# 曾按扩展名整类排除音频、生产环境改读外链，但外链一直没落地，导致线上播不了；已改回自托管
