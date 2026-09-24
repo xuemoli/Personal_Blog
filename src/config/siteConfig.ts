@@ -48,8 +48,8 @@ export const siteConfig: SiteConfig = {
 	subtitle: "我的个人博客",
 
 	// 站点 URL
-	// 暂用本地地址占位，部署前改成真实域名，例如 "https://blog.example.com"
-	site_url: "http://localhost:4321",
+	// 用于生成 canonical、sitemap、RSS 等绝对地址，必须是线上真实域名
+	site_url: "https://liuxing.icu",
 
 	// 站点描述
 	description: "这里是我的个人博客，记录学习笔记、技术分享与生活随笔。",
