@@ -454,7 +454,7 @@ chore:    构建/工具变动
 
 ### 11.3 .gitignore 常用规则
 
-```gitignore
+```
 # 忽略所有 .log 文件
 *.log
 
