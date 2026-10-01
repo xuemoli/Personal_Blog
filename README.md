@@ -27,7 +27,9 @@
 
 ## 🖼️ 界面速览
 
-下面这些图都是把项目在本地跑起来（`pnpm build` + `pnpm preview`）之后实机截的，没有用主题作者的演示图。
+下面这些图都是把项目在本地跑起来（`pnpm build` + `pnpm preview`）之后实机截的，没有用主题作者的演示图：桌面端 1600×1000，移动端 430×932，移动端截图与桌面端取自同一个构建产物。
+
+### 桌面端
 
 **首页 · 暗色** —— 壁纸与主题色跟随「亮色 / 暗色 / 跟随系统」切换
 
@@ -49,9 +51,29 @@
 
 ![相册页](./docs/screenshots/gallery.webp)
 
-**移动端首页** —— 导航收成抽屉，文章列表自动切单列
+### 移动端
+
+和桌面端同一套页面，导航收成抽屉、文章列表自动切单列、侧边栏内容下沉到文章之后。
+
+**首页** —— 横幅、分类导航与文章卡片
 
 ![移动端首页](./docs/screenshots/mobile-home.webp)
+
+**文章页** —— 公式表格在窄屏下横向滚动
+
+![移动端文章页 · 不定积分公式](./docs/screenshots/mobile-post-math.webp)
+
+**归档页** —— 时间轴与分类筛选
+
+![移动端归档页](./docs/screenshots/mobile-archive.webp)
+
+**动态页** —— 随手记与按年筛选
+
+![移动端动态页](./docs/screenshots/mobile-dynamic.webp)
+
+**相册页** —— 相册卡片与加密标识
+
+![移动端相册页](./docs/screenshots/mobile-gallery.webp)
 
 壁纸文件放在 `public/assets/images/DesktopWallpaper/`，刷新时会按配置随机抽取，所以每张截图里的背景都不一样。
 
