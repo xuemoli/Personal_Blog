@@ -53,27 +53,9 @@
 
 ### 移动端
 
-和桌面端同一套页面，导航收成抽屉、文章列表自动切单列、侧边栏内容下沉到文章之后。
+和桌面端同一套页面：导航收成抽屉、文章列表自动切单列、侧边栏内容下沉到文章之后。下图从左到右、自上而下依次是**首页、文章页、归档、动态、相册**，点开可看原始尺寸。
 
-**首页** —— 横幅、分类导航与文章卡片
-
-![移动端首页](./docs/screenshots/mobile-home.webp)
-
-**文章页** —— 公式表格在窄屏下横向滚动
-
-![移动端文章页 · 不定积分公式](./docs/screenshots/mobile-post-math.webp)
-
-**归档页** —— 时间轴与分类筛选
-
-![移动端归档页](./docs/screenshots/mobile-archive.webp)
-
-**动态页** —— 随手记与按年筛选
-
-![移动端动态页](./docs/screenshots/mobile-dynamic.webp)
-
-**相册页** —— 相册卡片与加密标识
-
-![移动端相册页](./docs/screenshots/mobile-gallery.webp)
+![移动端 · 首页 / 文章页 / 归档 / 动态 / 相册](./docs/screenshots/mobile-grid.webp)
 
 壁纸文件放在 `public/assets/images/DesktopWallpaper/`，刷新时会按配置随机抽取，所以每张截图里的背景都不一样。
 
