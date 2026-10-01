@@ -1,21 +1,12 @@
-<div align="center">
-
 # 我的博客
 
 **liuxing.icu** —— 记数学、记折腾、记生活里的碎片
 
-[![在线访问](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E8%AE%BF%E9%97%AE-liuxing.icu-2ea44f?style=flat-square)](https://liuxing.icu)
-[![仓库](https://img.shields.io/badge/GitHub-xuemoli%2FPersonal__Blog-181717?style=flat-square&logo=github)](https://github.com/xuemoli/Personal_Blog)
-[![部署](https://img.shields.io/badge/%E6%89%98%E7%AE%A1-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://liuxing.icu)
-[![Astro](https://img.shields.io/badge/Astro-7.3.2-FF5D01?style=flat-square&logo=astro&logoColor=white)](https://astro.build)
-[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
-
-</div>
+[![在线访问](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E8%AE%BF%E9%97%AE-liuxing.icu-2ea44f?style=flat-square)](https://liuxing.icu) [![仓库](https://img.shields.io/badge/GitHub-xuemoli%2FPersonal__Blog-181717?style=flat-square&logo=github)](https://github.com/xuemoli/Personal_Blog) [![部署](https://img.shields.io/badge/%E6%89%98%E7%AE%A1-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://liuxing.icu) [![Astro](https://img.shields.io/badge/Astro-7.3.2-FF5D01?style=flat-square&logo=astro&logoColor=white)](https://astro.build) [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](./LICENSE)
 
 ![首页](./docs/screenshots/home-light.webp)
 
-> [!NOTE]
-> 这个仓库是**我自己的博客源码**，不是主题模板。文章、配置、壁纸、音乐、部署参数都躺在这份代码里。
+> **说明**：这个仓库是**我自己的博客源码**，不是主题模板。文章、配置、壁纸、音乐、部署参数都躺在这份代码里。
 > 博客主题是 [CuteLeaf/Firefly](https://github.com/CuteLeaf/Firefly)（在 [saicaca/fuwari](https://github.com/saicaca/fuwari) 基础上二次开发），我在它之上做了个人化改造——换成自己的颜色、壁纸、导航与内容结构，并补上了 Netlify 部署配置。
 
 ---
@@ -38,22 +29,31 @@
 
 下面这些图都是把项目在本地跑起来（`pnpm build` + `pnpm preview`）之后实机截的，没有用主题作者的演示图。
 
-<table>
-  <tr>
-    <td width="50%"><img src="./docs/screenshots/home-dark.webp" alt="首页（暗色）"><br><sub>首页 · 暗色 · 壁纸与主题色跟随模式切换</sub></td>
-    <td width="50%"><img src="./docs/screenshots/post-math.webp" alt="文章页"><br><sub>文章页 · KaTeX 公式、系列、悬浮目录</sub></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="./docs/screenshots/archive.webp" alt="归档页"><br><sub>归档页 · 时间轴 + 分类筛选</sub></td>
-    <td width="50%"><img src="./docs/screenshots/dynamic.webp" alt="动态页"><br><sub>动态页 · 随手记，支持搜索与按年筛选</sub></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="./docs/screenshots/gallery.webp" alt="相册页"><br><sub>相册页 · 分相册浏览，支持加密相册</sub></td>
-    <td width="50%"><img src="./docs/screenshots/mobile-home.webp" alt="移动端首页" width="430"><br><sub>移动端 · 导航收成抽屉，列表自动切单列</sub></td>
-  </tr>
-</table>
+**首页 · 暗色** —— 壁纸与主题色跟随「亮色 / 暗色 / 跟随系统」切换
 
-壁纸文件放在 <code>public/assets/images/DesktopWallpaper/</code>，刷新时会按配置随机抽取，所以每张截图里的背景都不一样。
+![首页（暗色）](./docs/screenshots/home-dark.webp)
+
+**文章页** —— KaTeX 公式、所属系列、右侧悬浮目录
+
+![文章页 · 不定积分公式](./docs/screenshots/post-math.webp)
+
+**归档页** —— 时间轴 + 分类筛选
+
+![归档页](./docs/screenshots/archive.webp)
+
+**动态页** —— 随手记，支持搜索与按年筛选
+
+![动态页](./docs/screenshots/dynamic.webp)
+
+**相册页** —— 分相册浏览，支持给单个相册加密
+
+![相册页](./docs/screenshots/gallery.webp)
+
+**移动端首页** —— 导航收成抽屉，文章列表自动切单列
+
+![移动端首页](./docs/screenshots/mobile-home.webp)
+
+壁纸文件放在 `public/assets/images/DesktopWallpaper/`，刷新时会按配置随机抽取，所以每张截图里的背景都不一样。
 
 ## 🗂️ 站里都有什么
 
