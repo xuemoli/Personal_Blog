@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Firefly is a feature-rich static blog theme built on **Astro 7** with **Svelte 5** for interactive components. It's a fork of [Fuwari](https://github.com/saicaca/fuwari) extended with extensive features. Primary language is Chinese (Simplified) with i18n for en, zh_CN, zh_TW, ja, ko, ru.
+This repository is the source for a **personal blog** (liuxing.icu) — content, config, wallpapers, and deploy settings all live here, so treat it as a site, not a reusable theme template. The underlying theme is [CuteLeaf/Firefly](https://github.com/CuteLeaf/Firefly) (itself built on [Fuwari](https://github.com/saicaca/fuwari)), a feature-rich static blog built on **Astro 7** with **Svelte 5** for interactive components. Primary language is Chinese (Simplified) with i18n for en, zh_CN, zh_TW, ja, ko, ru.
+
+`README.md` (Chinese) documents the live site, hosting, and feature screenshots (`docs/screenshots/`); `README.en.md` plus `docs/README.{ja,ko,zh-TW}.md` are translations. Screenshots are real captures from `pnpm build` + `pnpm preview`.
 
 ## Commands
 
@@ -26,6 +28,13 @@ Package manager is **pnpm** (enforced by `preinstall`). Node.js >= 22.23 require
 
 There is no test framework. Before committing changes that affect rendering, content, or generated assets, run `pnpm check`, `pnpm type-check`, and `pnpm build`; verify visual/interactive changes with `pnpm dev` or `pnpm preview`.
 
+`AGENTS.md` (Chinese) is the sibling agent guide — keep it in sync when changing build commands, conventions, or generated-file expectations.
+
+### CI (`.github/workflows/`)
+
+- `build.yml` — on push/PR to `master`, matrix over Node 22 and 23: `pnpm install --frozen-lockfile`, then `pnpm astro check` (job `check`) and `pnpm astro build` (job `build`). Note it runs bare `astro build`, **not** `pnpm build`, so the pre/post-build scripts (LQIP, font subsetting, Pagefind) do not run in CI.
+- `biome.yml` — `biome ci ./src` (lint gate on `src/` only).
+
 ## Architecture
 
 ### Astro + Svelte Hybrid
@@ -34,6 +43,7 @@ There is no test framework. Before committing changes that affect rendering, con
 - `.svelte` components for interactive UI (search, settings, pagination, archive) — mounted with `client:load` or `client:visible`
 - Swup.js handles SPA-like page transitions; its containers are declared in `astro.config.mjs` (`#swup-container`, sidebar dynamic containers, banner overlays, floating TOC wrapper) — scripts that must re-init on navigation hook into Swup events
 - Some heavy animation runs off the main thread: `src/workers/sakura.worker.ts` draws the sakura effect on an OffscreenCanvas in a Dedicated Worker (protocol in `src/types/sakura-worker.ts`)
+- `astro.config.mjs` sets `base: "/"` and `trailingSlash: "always"` — routes are emitted with a trailing slash (e.g. `/posts/foo/`), so internal links and redirects must match
 
 ### Configuration-Driven
 
@@ -58,11 +68,11 @@ Scroll-linked work in `src/utils/` is rAF-throttled and must stay cheap on mobil
 
 ### Content Collections
 
-Defined in `src/content.config.ts`:
-- `posts` — blog posts (`.md`/`.mdx`) with frontmatter: title, published, tags, category, draft, pinned, password, comment, series, etc.
-- `spec` — special pages (about, guestbook)
-- `dynamic` — microblog entries (`.md`) with frontmatter: published, pinned, location
-- `projects` — project showcase entries with frontmatter: title, published, description, image, tags, link (label/icon/value), status, order
+Defined in `src/content.config.ts`, with content stored under `src/content/`:
+- `posts` (`src/content/posts/`) — blog posts (`.md`/`.mdx`) with frontmatter: title, published, tags, category, draft, pinned, password, comment, series, etc.
+- `spec` (`src/content/spec/`) — special pages (about, guestbook)
+- `dynamic` (`src/content/dynamic/`) — microblog entries (`.md`) with frontmatter: published, pinned, location
+- `projects` (`src/content/projects/`) — project showcase entries with frontmatter: title, published, description, image, tags, link (label/icon/value), status, order
 
 ### Key Directories
 
@@ -98,6 +108,9 @@ LQIP data is generated into `src/constants/lqips.json` and committed — regener
 
 ## Deployment
 
-- **Vercel** (default, `vercel.json`)
-- **Cloudflare Workers** (`wrangler.jsonc`, set `CF_WORKERS` env var — switches the Astro adapter to `@astrojs/cloudflare` in `astro.config.mjs`)
-- Static output to `dist/`
+Production is **Netlify** static hosting at <https://liuxing.icu> (`netlify.toml`: `pnpm build` → publish `dist`, `NODE_VERSION = "22"`, cache/security headers). Other target configs coexist in the repo and are ignored by Netlify:
+
+- **Vercel** (`vercel.json`) — equivalent build + header config; no longer the active host.
+- **Cloudflare Workers** (`wrangler.jsonc`) — set the `CF_WORKERS` env var to switch the Astro adapter to `@astrojs/cloudflare` in `astro.config.mjs`.
+
+Static output always goes to `dist/`.
