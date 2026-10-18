@@ -62,6 +62,13 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				cover: "",
 				lrc: "",
 			},
+			{
+				name: "落花雨",
+				artist: "蒋家驹（蒋蒋）",
+				url: "/assets/music/落花雨.mp3",
+				cover: "",
+				lrc: "",
+			},
 		],
 	},
 };
